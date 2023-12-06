@@ -7,8 +7,10 @@ ARG TEXT_EDITOR=nano
 RUN apt-get update && apt-get install -y \
     python3.11 \
     curl \
-    ${TEXT_EDITOR}
-
+    ${TEXT_EDITOR} \
+    nginx
 COPY /app /app
 
 WORKDIR /app
+
+CMD ["ngnix","-g","daemon off;"]
