@@ -12,5 +12,4 @@ RUN apt-get update && apt-get install -y \
 COPY /app /app
 
 WORKDIR /app
-
-CMD ["ngnix","-g","daemon off;"]
+CMD ["nginx","-g","daemon off;"]
