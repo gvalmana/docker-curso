@@ -2,10 +2,11 @@ version: '3.7'
 
 services:
   node:
-    container_name: node
     build: .
     ports:
       - "3000:3000"
+    networks:
+      - test-tutorial      
   
   python:
     image: python
