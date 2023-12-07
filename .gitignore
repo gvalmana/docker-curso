@@ -1,2 +1,4 @@
 .env
 main.py/
+node_modules/
+app/node_modules/
