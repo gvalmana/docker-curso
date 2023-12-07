@@ -1,12 +1,14 @@
 version: '3.7'
 
 services:
-  ubuntu:
-    image: ubuntu
+  python:
+    image: python
     tty: true
-    container_name: ubuntu
+    container_name: python
     volumes:
-      - "./main.py:/main.py"
+      - ./app:/scripts
+    networks:
+      - test-tutorial      
   nginx:
     image: nginx
     container_name: nginx
@@ -20,6 +22,8 @@ services:
     container_name: redis
     ports:
       - "6379:6379"
+    networks:
+      - test-tutorial      
   mysql:
     image: mysql
     container_name: mysql
@@ -29,6 +33,17 @@ services:
       - db-data:/var/lib/mysql
     environment:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    networks:
+      - test-tutorial      
+  phpmyadmin:
+    image: phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      - PMA_HOSTS=mysql
+    networks:
+      - test-tutorial
+    ports:
+      - "8085:80"
 
 networks:
   test-tutorial:
